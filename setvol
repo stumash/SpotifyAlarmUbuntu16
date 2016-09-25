@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo ----------
+# echo the name of this script and the argument it was passed
+echo script: /home/stumash/Documents/programming/bashFiles/my_tools/sound_tools/setvol
+echo argument: "${1}"
+echo -----
+# set the volume to whatever level is specified
+# as the first argument to this script
+amixer -D pulse sset Master ${1}%
+echo ----------
+

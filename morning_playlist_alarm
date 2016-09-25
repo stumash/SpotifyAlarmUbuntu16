@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# get dbus variable and set it before running spotify
+# to ensure spotify is using the same value as sp
+export SESSION_MANAGER='gnome-session'
+export USER="your_username_here"
+export $(cat /proc/$(pgrep "$SESSION_MANAGER" -u "$USER")/environ|egrep -z '^DBUS_SESSION_BUS_ADDRESS=')
+
+# start spotify and wait for it to boot up
+(spotify &> /dev/null &)
+sleep 8
+
+# set volume low
+setvol 5
+
+# play morning playlist
+sp open 'spotify:user:mashrogers:playlist:3q0VDH684fhdEPkC2UjhPP'
+
+# gradually increase volume to 85%
+count=0
+while [ $count -lt 10 ]; do
+    volup 8
+    sleep 5
+    let count+=1
+done
+
