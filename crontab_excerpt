@@ -1,0 +1,12 @@
+# notes about cron format:
+# day_of_week goes from 0-6 (sunday-saturday).
+# if you want all weekdays you could do 1-5 or 1,2,3,4,5
+# hour goes from 0-23
+# if you don't care about one of the fields, put on asterisk there
+# example: 7:30pm Monday,Thursday,Friday, any month, any day_of_month (0-31)
+# 30 19 * * 1,4,5 scriptname_in_usrlocalbin
+
+# edit the following line as desired and add it to your crontab file after entering the command 'crontab -e'
+
+<minute> <hour> <day_of_month> <month_of_year> <day_of_week> export DISPLAY=:0 && sudo -u <your_username> morning_playlist_alarm
+
