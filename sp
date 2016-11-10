@@ -216,7 +216,7 @@ function sp-search {
 
   Q="$@"
   SPTFY_URI=$( \
-    curl -s -G  --data-urlencode "q=$Q" ws.spotify.com/search/1/track \
+    curl -s -G  --data-urlencode "q=$Q" --data-urlencode "type=track" https://api.spotify.com/v1/search \
     | grep -E -o "spotify:track:[a-zA-Z0-9]+" -m 1 \
   )
 
